@@ -11,25 +11,28 @@ namespace ConsoleApp3
         static void Main(string[] args)
         {
 
-            Console.WriteLine("vvedit 4 cifri cherez probel: ");
+            Console.Write("vvedit 6 chisel: ");
             string input = Console.ReadLine();
 
-
-            string[] digits = input.Split(' ');
-
-            if (digits.Length == 4)
+            if (input.Length != 6)
             {
-
-                string result = string.Join("", digits);
-
-                int number = int.Parse(result);
-
-                Console.WriteLine("vashe chislo: " + number);
+                Console.WriteLine("mala chisel.");
+                return;
             }
-            else
-            {
-                Console.WriteLine("vvod onle 4 cifri.");
-            }
+
+            Console.Write("vvedit cherez probel kavo pamenat: ");
+
+            string[] positions = Console.ReadLine().Split();
+
+            int pos1 = int.Parse(positions[0]) - 1;
+            int pos2 = int.Parse(positions[1]) - 1;
+
+            char[] digits = input.ToCharArray();
+            char temp = digits[pos1];
+            digits[pos1] = digits[pos2];
+            digits[pos2] = temp;
+
+            Console.WriteLine(new string(digits));
         }
     }
 }
