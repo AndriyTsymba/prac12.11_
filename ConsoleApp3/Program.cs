@@ -11,33 +11,27 @@ namespace ConsoleApp3
         static void Main(string[] args)
         {
 
-            Console.WriteLine("vvedit daty");
-            string input = Console.ReadLine();
+            Console.WriteLine("vvedit temperatyry:");
 
+            double temperature = double.Parse(Console.ReadLine());
 
-            DateTime date;
-            if (!DateTime.TryParse(input, out date))
+            Console.WriteLine("Convert to celsiy or farenheit?");
+            char choice = Char.ToUpper(Console.ReadKey().KeyChar);
+
+            if (choice == 'C')
             {
-                Console.WriteLine("data perebor.");
-                return;
+                double celsius = (temperature - 32) * 5 / 9;
+                Console.WriteLine($"\n{temperature} Fahrenheit is {celsius} Celsiy.");
             }
-
-            string season = GetSeason(date.Month);
-
-            string dayOfWeek = date.DayOfWeek.ToString();
-
-            Console.WriteLine($"{season} {dayOfWeek}");
-        }
-
-        static string GetSeason(int month)
-        {
-            if (month == 12 || month == 1 || month == 2)
-                return "Winter";
-            if (month >= 3 && month <= 5)
-                return "Spring";
-            if (month >= 6 && month <= 8)
-                return "Summer";
-            return "Autumn";
+            else if (choice == 'F')
+            {
+                double fahrenheit = (temperature * 9 / 5) + 32;
+                Console.WriteLine($"\n{temperature} Celsiy is {fahrenheit} Fahrenheit.");
+            }
+            else
+            {
+                Console.WriteLine("\nnekanon, vvedit 'C' or 'F'.");
+            }
         }
     }
 }
