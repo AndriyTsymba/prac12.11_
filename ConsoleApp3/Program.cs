@@ -10,38 +10,33 @@ namespace ConsoleApp3
     {
         static void Main(string[] args)
         {
-            Console.InputEncoding = Encoding.Unicode;
-            Console.OutputEncoding = Encoding.Unicode;
 
-            Console.WriteLine("Введіть довжину лінії:");
-            int length = int.Parse(Console.ReadLine());
-
-            Console.WriteLine("Введіть символ заповнювач:");
-            char fillCharacter = Console.ReadLine()[0];
-
-            Console.WriteLine("Введіть напрямок лінії (горизонтальна/вертикальна):");
-            string direction = Console.ReadLine().ToLower();
-
-            if (direction == "горизонтальна")
+            Console.Write("Введіть число від 1 до 100: ");
+            int number;
+            bool isNumber = int.TryParse(Console.ReadLine(), out number);
+            if (isNumber && number >= 1 && number <= 100)
             {
-                for (int i = 0; i < length; i++)
+                if (number % 3 == 0 && number % 5 == 0)
                 {
-                    Console.Write(fillCharacter);
+                    Console.WriteLine("FizzBuzz");
                 }
-                Console.WriteLine();
-            }
-            else if (direction == "вертикальна")
-            {
-                for (int i = 0; i < length; i++)
+                else if (number % 3 == 0)
                 {
-                    Console.WriteLine(fillCharacter);
+                    Console.WriteLine("Fizz");
+                }
+                else if (number % 5 == 0)
+                {
+                    Console.WriteLine("Buzz");
+                }
+                else
+                {
+                    Console.WriteLine(number);
                 }
             }
             else
             {
-                Console.WriteLine("Невідомий напрямок. Виберіть 'горизонтальна' або 'вертикальна'.");
+                Console.WriteLine("Помилка: введіть число від 1 до 100.");
             }
-
         }
     }
 }
