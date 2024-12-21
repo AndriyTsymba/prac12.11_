@@ -13,20 +13,38 @@ namespace ConsoleApp3
             Console.InputEncoding = Encoding.Unicode;
             Console.OutputEncoding = Encoding.Unicode;
 
-            Console.WriteLine("Введіть шестизначне число:");
-            int number = int.Parse(Console.ReadLine());
+            Console.WriteLine("Введіть межі числового діапазону:");
 
-            if (number >= 100000 && number <= 999999)
-            {
-                string reversedNumber = new string(number.ToString().Reverse().ToArray());
+            int lowerBound = int.Parse(Console.ReadLine());
+            int upperBound = int.Parse(Console.ReadLine());
 
-                Console.WriteLine($"Перевернуте число: {reversedNumber}");
-            }
-            else
+            if (lowerBound > upperBound)
             {
-                Console.WriteLine("Введене число не є шестизначним.");
+                Console.WriteLine("Невірний діапазон. Нижня межа повинна бути меншою за верхню.");
+                return;
             }
 
+            int a = 0, b = 1;
+
+            Console.WriteLine("Числа Фібоначчі в діапазоні:");
+
+            if (lowerBound <= a && a <= upperBound)
+            {
+                Console.Write(a + " ");
+            }
+
+            while (b <= upperBound)
+            {
+                if (b >= lowerBound)
+                {
+                    Console.Write(b + " ");
+                }
+
+                int next = a + b;
+                a = b;
+                b = next;
+            }
+            Console.WriteLine();
 
         }
     }
