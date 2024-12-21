@@ -11,28 +11,33 @@ namespace ConsoleApp3
         static void Main(string[] args)
         {
 
-            Console.Write("vvedit 6 chisel: ");
+            Console.WriteLine("vvedit daty");
             string input = Console.ReadLine();
 
-            if (input.Length != 6)
+
+            DateTime date;
+            if (!DateTime.TryParse(input, out date))
             {
-                Console.WriteLine("mala chisel.");
+                Console.WriteLine("data perebor.");
                 return;
             }
 
-            Console.Write("vvedit cherez probel kavo pamenat: ");
+            string season = GetSeason(date.Month);
 
-            string[] positions = Console.ReadLine().Split();
+            string dayOfWeek = date.DayOfWeek.ToString();
 
-            int pos1 = int.Parse(positions[0]) - 1;
-            int pos2 = int.Parse(positions[1]) - 1;
+            Console.WriteLine($"{season} {dayOfWeek}");
+        }
 
-            char[] digits = input.ToCharArray();
-            char temp = digits[pos1];
-            digits[pos1] = digits[pos2];
-            digits[pos2] = temp;
-
-            Console.WriteLine(new string(digits));
+        static string GetSeason(int month)
+        {
+            if (month == 12 || month == 1 || month == 2)
+                return "Winter";
+            if (month >= 3 && month <= 5)
+                return "Spring";
+            if (month >= 6 && month <= 8)
+                return "Summer";
+            return "Autumn";
         }
     }
 }
