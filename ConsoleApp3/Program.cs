@@ -11,15 +11,25 @@ namespace ConsoleApp3
         static void Main(string[] args)
         {
 
-            Console.Write("vvedit znachennya: ");
-            double value = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("vvedit 4 cifri cherez probel: ");
+            string input = Console.ReadLine();
 
-            Console.Write("vvedit vidsotok: ");
-            double percentage = Convert.ToDouble(Console.ReadLine());
 
-            double result = (value * percentage) / 100;
+            string[] digits = input.Split(' ');
 
-            Console.WriteLine($"{percentage} % vid {value} = {result}");
+            if (digits.Length == 4)
+            {
+
+                string result = string.Join("", digits);
+
+                int number = int.Parse(result);
+
+                Console.WriteLine("vashe chislo: " + number);
+            }
+            else
+            {
+                Console.WriteLine("vvod onle 4 cifri.");
+            }
         }
     }
 }
