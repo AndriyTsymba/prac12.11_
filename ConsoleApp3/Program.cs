@@ -13,24 +13,33 @@ namespace ConsoleApp3
             Console.InputEncoding = Encoding.Unicode;
             Console.OutputEncoding = Encoding.Unicode;
 
-            Console.WriteLine("Введіть число A (A < B):");
-            int A = int.Parse(Console.ReadLine());
-            Console.WriteLine("Введіть число B (A < B):");
-            int B = int.Parse(Console.ReadLine());
+            Console.WriteLine("Введіть довжину лінії:");
+            int length = int.Parse(Console.ReadLine());
 
-            if (A >= B)
-            {
-                Console.WriteLine("Число A повинно бути меншим за число B.");
-                return;
-            }
+            Console.WriteLine("Введіть символ заповнювач:");
+            char fillCharacter = Console.ReadLine()[0];
 
-            for (int i = A; i <= B; i++)
+            Console.WriteLine("Введіть напрямок лінії (горизонтальна/вертикальна):");
+            string direction = Console.ReadLine().ToLower();
+
+            if (direction == "горизонтальна")
             {
-                for (int j = 0; j < i; j++)
+                for (int i = 0; i < length; i++)
                 {
-                    Console.Write(i + " ");
+                    Console.Write(fillCharacter);
                 }
                 Console.WriteLine();
+            }
+            else if (direction == "вертикальна")
+            {
+                for (int i = 0; i < length; i++)
+                {
+                    Console.WriteLine(fillCharacter);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Невідомий напрямок. Виберіть 'горизонтальна' або 'вертикальна'.");
             }
 
         }
