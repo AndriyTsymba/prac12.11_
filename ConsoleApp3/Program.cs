@@ -13,38 +13,25 @@ namespace ConsoleApp3
             Console.InputEncoding = Encoding.Unicode;
             Console.OutputEncoding = Encoding.Unicode;
 
-            Console.WriteLine("Введіть межі числового діапазону:");
+            Console.WriteLine("Введіть число A (A < B):");
+            int A = int.Parse(Console.ReadLine());
+            Console.WriteLine("Введіть число B (A < B):");
+            int B = int.Parse(Console.ReadLine());
 
-            int lowerBound = int.Parse(Console.ReadLine());
-            int upperBound = int.Parse(Console.ReadLine());
-
-            if (lowerBound > upperBound)
+            if (A >= B)
             {
-                Console.WriteLine("Невірний діапазон. Нижня межа повинна бути меншою за верхню.");
+                Console.WriteLine("Число A повинно бути меншим за число B.");
                 return;
             }
 
-            int a = 0, b = 1;
-
-            Console.WriteLine("Числа Фібоначчі в діапазоні:");
-
-            if (lowerBound <= a && a <= upperBound)
+            for (int i = A; i <= B; i++)
             {
-                Console.Write(a + " ");
-            }
-
-            while (b <= upperBound)
-            {
-                if (b >= lowerBound)
+                for (int j = 0; j < i; j++)
                 {
-                    Console.Write(b + " ");
+                    Console.Write(i + " ");
                 }
-
-                int next = a + b;
-                a = b;
-                b = next;
+                Console.WriteLine();
             }
-            Console.WriteLine();
 
         }
     }
