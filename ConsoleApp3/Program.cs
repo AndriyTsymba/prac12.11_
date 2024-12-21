@@ -11,32 +11,15 @@ namespace ConsoleApp3
         static void Main(string[] args)
         {
 
-            Console.Write("Введіть число від 1 до 100: ");
-            int number;
-            bool isNumber = int.TryParse(Console.ReadLine(), out number);
-            if (isNumber && number >= 1 && number <= 100)
-            {
-                if (number % 3 == 0 && number % 5 == 0)
-                {
-                    Console.WriteLine("FizzBuzz");
-                }
-                else if (number % 3 == 0)
-                {
-                    Console.WriteLine("Fizz");
-                }
-                else if (number % 5 == 0)
-                {
-                    Console.WriteLine("Buzz");
-                }
-                else
-                {
-                    Console.WriteLine(number);
-                }
-            }
-            else
-            {
-                Console.WriteLine("Помилка: введіть число від 1 до 100.");
-            }
+            Console.Write("vvedit znachennya: ");
+            double value = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("vvedit vidsotok: ");
+            double percentage = Convert.ToDouble(Console.ReadLine());
+
+            double result = (value * percentage) / 100;
+
+            Console.WriteLine($"{percentage} % vid {value} = {result}");
         }
     }
 }
