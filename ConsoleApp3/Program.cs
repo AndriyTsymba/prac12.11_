@@ -11,26 +11,23 @@ namespace ConsoleApp3
         static void Main(string[] args)
         {
 
-            Console.WriteLine("vvedit temperatyry:");
+            Console.Write("vvedit diapazonni chisla: ");
+            int start = int.Parse(Console.ReadLine());
+            int end = int.Parse(Console.ReadLine());
 
-            double temperature = double.Parse(Console.ReadLine());
-
-            Console.WriteLine("Convert to celsiy or farenheit?");
-            char choice = Char.ToUpper(Console.ReadKey().KeyChar);
-
-            if (choice == 'C')
+            if (start > end)
             {
-                double celsius = (temperature - 32) * 5 / 9;
-                Console.WriteLine($"\n{temperature} Fahrenheit is {celsius} Celsiy.");
+                int temp = start;
+                start = end;
+                end = temp;
             }
-            else if (choice == 'F')
+
+            for (int i = start; i <= end; i++)
             {
-                double fahrenheit = (temperature * 9 / 5) + 32;
-                Console.WriteLine($"\n{temperature} Celsiy is {fahrenheit} Fahrenheit.");
-            }
-            else
-            {
-                Console.WriteLine("\nnekanon, vvedit 'C' or 'F'.");
+                if (i % 2 == 0)
+                {
+                    Console.WriteLine(i);
+                }
             }
         }
     }
